@@ -55,6 +55,7 @@ export class StockComponent {
 
         this.#products = await this.#service.findAll()
 
+
         this.#products.sort((p1, p2) => p1.label.localeCompare(p2.label))
         
         this.#template = `<link rel="stylesheet" href="/src/components/stock/product-tile.css">`
@@ -68,6 +69,8 @@ export class StockComponent {
         this.#template += '</div>'
 
         this.#app.innerHTML = this.#template
+
+        loader.dismiss(1)
 
     }
 }
