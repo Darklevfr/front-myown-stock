@@ -1,4 +1,4 @@
-import { Product } from "./product.js"
+import { Product } from "./product"
 
 export class ProductDeserializer {
     static deserializeArray(datas) {

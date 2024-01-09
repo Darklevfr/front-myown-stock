@@ -1,6 +1,6 @@
-import { Config } from "../config/config.js"
-import { HttpClient } from "../http/http-client.js"
-import { ProductDeserializer } from "./product-deserializer.js"
+import { Config } from "../config/config"
+import { HttpClient } from "../http/http-client"
+import { ProductDeserializer } from "./product-deserializer"
 
 export class ProductService {
     /**

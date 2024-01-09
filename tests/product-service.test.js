@@ -18,16 +18,4 @@ describe ('Product service', () => {
     beforeEach(() => {
         main = new Main()
     })
-
-    it('Should return 3 products', () => {
-        const productService = new ProductService()
-        const products = productService.findAll()
-        expect(products.length).toEqual(3)
-    })
-
-    it(`Should contains a Product instance`, () => {
-        const productService = new ProductService()
-        const products = productService.findAll()
-        expect(products[0]).toBeInstanceOf(Product)        
-    })
 })

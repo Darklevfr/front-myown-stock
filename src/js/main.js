@@ -1,4 +1,4 @@
-import { ProductFixture } from "./product-list/product_fixture.js";
+import { ProductFixture } from "./product-list/product_fixture";
 
 let main;
 

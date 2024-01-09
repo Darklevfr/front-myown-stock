@@ -1,4 +1,4 @@
-import { Product } from "../../js/product-list/product.js"
+import { Product } from "../../js/product-list/product"
 
 export class ProductTile {
     /**

@@ -1,6 +1,6 @@
-import { HomeComponent } from "../../components/home/home.component.js"
-import { StockComponent } from "../../components/stock/stock.component.js"
-import { RouteBuilder } from "./route-builder.js"
+import { HomeComponent } from "../../components/home/home.component"
+import { StockComponent } from "../../components/stock/stock.component"
+import { RouteBuilder } from "./route-builder"
 export class Router {
     /**
      * Route collection

@@ -1,6 +1,6 @@
-import { PictureLoader } from '../../js/loader/picture-loader.js'
-import { ProductService } from '../../js/product-list/product-service.js'
-import { ProductTile } from './product-tile.js'
+import { PictureLoader } from '../../js/loader/picture-loader'
+import { ProductService } from '../../js/product-list/product-service'
+import { ProductTile } from './product-tile'
 /**
  * StockComponent
  * @version 1.0.0

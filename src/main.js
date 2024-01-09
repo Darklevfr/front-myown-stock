@@ -8,8 +8,8 @@
  * @see Router
  */
 
-import { ProductFixture } from "./js/product-list/product_fixture.js"
-import { Router } from "./js/router/router.js"
+import { ProductFixture } from "./js/product-list/product_fixture"
+import { Router } from "./js/router/router"
 
 /**
  * Class instance of Main
