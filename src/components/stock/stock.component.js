@@ -1,3 +1,4 @@
+import { PictureLoader } from '../../js/loader/picture-loader.js'
 import { ProductService } from '../../js/product-list/product-service.js'
 import { ProductTile } from './product-tile.js'
 /**
@@ -50,6 +51,8 @@ export class StockComponent {
     }
 
     async #onInit() {
+        const loader = new PictureLoader() // Overlay added
+
         this.#products = await this.#service.findAll()
 
         this.#products.sort((p1, p2) => p1.label.localeCompare(p2.label))
