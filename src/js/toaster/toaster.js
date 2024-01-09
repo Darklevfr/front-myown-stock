@@ -100,23 +100,35 @@ export class Toaster {
         const toaster = this.#buildToast()
         document.querySelector('body').appendChild(toaster)
         this.#timeout = setTimeout(
-            this.onDismiss(),
-            this.#duration * 1000
+             this.onDismiss('noop'),
+             this.#duration * 1000
         )
     }
 
-    onDismiss() {
+    onDismiss(noop = null) {
         clearTimeout(this.#timeout)
         document.querySelector('#widget-toaster').remove()
+        if (this.#action && !noop) {
+            this.#action.callback()
+        }
     }
 
     #buildToast() {
         const toastDiv = document.createElement('div')
         toastDiv.id = 'widget-toaster'
-        toastDiv.style.height = '2em'
-        toastDiv.style.width = '10em'
-        toastDiv.style.maxWidth = '14em'
+        toastDiv.style.height = '3em'
+        if (this.#action) {
+            toastDiv.style.width = '15em'
+            toastDiv.style.maxWidth = '20em'
+            toastDiv.style.display = 'flex'
+        } else {
+            toastDiv.style.width = '15em'
+            toastDiv.style.maxWidth = '20em'            
+        }
+
         toastDiv.style.position = 'absolute'
+        toastDiv.style.left = '50%'
+        toastDiv.style.transform = 'translateX(-50%)'
         toastDiv.style.backgroundColor = this.#backgroundColor
         // Loop on position to place toaster
         for (const style in this.#position) {
@@ -125,10 +137,22 @@ export class Toaster {
 
         const toastMessage = document.createElement('div')
         toastMessage.innerText = this.#message
+        toastMessage.style.height = 'inherit'
+        toastMessage.style.lineHeight = '3em'
+        toastMessage.style.verticalAlign = 'middle'
+        if (this.#action) {
+            toastMessage.style.width = '80%'
+        }
         toastDiv.appendChild(toastMessage)
 
         if (this.#action) {
+            const toastAction = document.createElement('div')
+            toastAction.innerText = this.#message
+            toastAction.style.height = 'inherit'
+            toastAction.style.lineHeight = '3em'
+            toastAction.style.verticalAlign = 'middle'
 
+            toastDiv.appendChild(toastAction)
         }
 
         return toastDiv

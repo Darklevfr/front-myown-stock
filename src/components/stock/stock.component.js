@@ -74,7 +74,9 @@ export class StockComponent {
 
         loader.dismiss(1)
 
+        
         const toaster = new Toaster()
+        toaster.message = 'Products was loaded !'
         toaster.show()
 
     }
