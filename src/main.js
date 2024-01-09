@@ -8,14 +8,17 @@
  * @see Router
  */
 
-import { ProductFixture } from "./js/product-list/product_fixture"
-import { Router } from "./js/router/router"
+import { Router } from "./js/router/router.js"
 
 /**
  * Class instance of Main
  */
 let main
 
+/**
+ * Load CSS as needed
+ */
+import './css/main.css'
 export class Main {
     #router = null
 
@@ -30,8 +33,6 @@ export class Main {
     #run() {
         this.#router = new Router()
         
-        // Load datas as application start
-        new ProductFixture().loadFixture()
     }
 
 }

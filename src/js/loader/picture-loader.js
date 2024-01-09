@@ -1,3 +1,4 @@
+import './loader.css'
 export class PictureLoader {
     #document = document.querySelector('body')
 
@@ -13,12 +14,6 @@ export class PictureLoader {
     }
 
     #buildLayout() {
-        // Add styles
-        const styleSheet = document.createElement('link')
-        styleSheet.setAttribute('href', '/src/js/loader/loader.css')
-        styleSheet.setAttribute('rel', 'stylesheet')
-        document.querySelector('head').appendChild(styleSheet)
-
         // 1st : Create a new DIV with className : outer-div
         const outerBox = document.createElement('div')
         // 2nd : Add the class to the freshly createdElement
