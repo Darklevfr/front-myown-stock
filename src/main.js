@@ -8,7 +8,7 @@
  * @see Router
  */
 
-import { Router } from "./js/router/router.js"
+import { Router } from "./js/router/router"
 
 /**
  * Class instance of Main
