@@ -2,6 +2,7 @@ import { PictureLoader } from '../../js/loader/picture-loader'
 import { ProductService } from '../../js/product-list/product-service'
 import { Toaster } from '../../js/toaster/toaster'
 import { ProductTile } from './product-tile'
+import { FormObject } from '../../js/form/form'
 /**
  * StockComponent
  * @version 1.0.0
@@ -62,16 +63,20 @@ export class StockComponent {
         this.#products.sort((p1, p2) => p1.label.localeCompare(p2.label))
         
         this.#template += `<div class="product-list" role="list">`
-        
+
+        this.#template += `<button type="button" id="addProduct"> Add a product </button>`
+
         for (const product of this.#products) {
             const tile = new ProductTile()
             tile.setParameter('product', product)
             this.#template += tile.render()
         }
         this.#template += '</div>'
-
         this.#app.innerHTML = this.#template
 
+        const form = new FormObject()
+        form.openModal()
+        
         loader.dismiss(1)
 
         
