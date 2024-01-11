@@ -18,6 +18,7 @@ export class FormObject {
 
     #nameProduct = null
     #number = null
+    #validation = false
 
 
     openModal() {
@@ -39,42 +40,54 @@ export class FormObject {
             document.querySelector('[app]').appendChild(outerBox)
 
 
-             this.#nameProduct = document.querySelector('#nameProduct')
-             this.#nameProduct.addEventListener('change' , () =>
-             {
-                this.verifyProduct()
-             })
-             this.#number = document.querySelector('#stockProduct')
-             this.#number.addEventListener('change' , () =>
-             {
-                this.verifyProduct()
-             })
-             this.#button = document.querySelector('#addProductForm')
-             
+            this.#nameProduct = document.querySelector('#nameProduct')
+            this.#nameProduct.addEventListener('change', () => {
+                this.verifyName()
+            })
+            this.#number = document.querySelector('#stockProduct')
+            this.#number.addEventListener('input', () => {
+                this.verifyStock()
+            })
+            this.#button = document.querySelector('#addProductForm')
+            this.#button.addEventListener('change', () => {
+                this.verifyButton()
+            })
+
+            // if (this.verifyStock() && this.verifyName() === true) {
+            //     console.log('trueButton')
+            //     this.#button.removeAttribute('disabled')
+
+            // }
         })
     }
 
-    verifyProduct() {
+    verifyName() {
 
-        console.log('wsh')
-        let validation = null
-
-        if (typeof this.#nameProduct.value != 'string') {
-            throw new Error('Cannot use this name of product.')
+        if (this.#nameProduct === "") {
+            throw new Error('Name was empty, please enter a real product')
         }
 
+        console.log('trueName')
+        return true
+    }
+
+    verifyStock() {
+
         this.#number = parseInt(this.#number.value)
-        console.log(typeof this.#number)
+        // console.log(typeof this.#number)
 
         if (this.#number < 0 || !(typeof this.#number === 'number')) {
             throw new Error('Cannot use this number, not enough or caractere is invalid.')
         }
 
-        validation = true
+        let lengthNb = this.#number
 
-        if (validation === true) {
-            this.#button.removeAttribute('disabled')
+        if (lengthNb.length === 0 || lengthNb === '') {
+            throw new Error('Cannot add this product, not enought in stock')
         }
 
+        console.log('trueStock')
+        return true
     }
+
 }
