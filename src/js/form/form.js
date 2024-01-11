@@ -41,7 +41,7 @@ export class FormObject {
 
 
             this.#nameProduct = document.querySelector('#nameProduct')
-            this.#nameProduct.addEventListener('change', () => {
+            this.#nameProduct.addEventListener('input', () => {
                 this.verifyName()
             })
             this.#number = document.querySelector('#stockProduct')
@@ -62,8 +62,8 @@ export class FormObject {
     }
 
     verifyName() {
-
-        if (this.#nameProduct === "") {
+        console.log(this.#nameProduct.value.length)
+        if (this.#nameProduct.value.length === 0) {
             throw new Error('Name was empty, please enter a real product')
         }
 
