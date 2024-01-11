@@ -1,8 +1,10 @@
 import '../form/form.css'
-
+import { HttpClient } from '../http/http-client'
+import { Product } from "../../js/product-list/product"
+import { Toaster } from "../../js/toaster/toaster"
 export class FormObject {
     #button = document.querySelector('#addProduct')
-
+    #httpClient = new HttpClient()
     #template = `
     <h1 class="titleForm"> Add a product : </h1>
     <form action="" method="POST" class="form">
@@ -58,9 +60,23 @@ export class FormObject {
             this.#button = document.querySelector('#addProductForm')
 
             this.#form = document.querySelector('.form')
-            this.#form.addEventListener('submit', (e) => {
+            this.#form.addEventListener('submit', async (e) => {
                 e.preventDefault()
-                this.#Submit()
+                const newProduct = new Product()
+                newProduct.id = this.#id.value
+                newProduct.label = this.#nameProduct.value
+                newProduct.stock = this.#number.value
+                const response = await this.#httpClient.add(newProduct)
+                if(response.ok)
+                    location.reload()
+                else{
+                    console.log("heelo")
+                    const myToaster = new Toaster()
+                    myToaster.message = "Can't no add product"
+                    myToaster.duration = 5
+                    myToaster.show()
+                }
+                    
             })
         })
     }
@@ -113,25 +129,6 @@ export class FormObject {
         this.#button.removeAttribute('disabled')
     }
 
-    async #Submit() {
-        console.log(JSON.stringify({
-            id: this.#id.value,
-            label: this.#nameProduct.value,
-            stock: this.#number.value
-        }))
-        const send = await fetch("http://localhost:8080/products", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body:
-            {
-                id: this.#id.value,
-                label: this.#nameProduct.value,
-                stock: this.#number.value
-            },
-        })
-        .then(response => response.json())
-    }
+
 
 }

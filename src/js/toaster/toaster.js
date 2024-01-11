@@ -99,7 +99,7 @@ export class Toaster {
     show() {
         const toaster = this.#buildToast()
         document.querySelector('body').appendChild(toaster)
-        this.#timeout = setTimeout(
+        this.#timeout = setTimeout( () => 
              this.onDismiss('noop'),
              this.#duration * 1000
         )
