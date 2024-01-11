@@ -1,0 +1,57 @@
+.form-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(200, 2%, 31%, .6);
+}
+
+.inner-form-box {
+
+    /* Positionnement */
+    position: relative;
+    top: 50%;
+    height: 25em;
+    width: 15em;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    padding: 10% 10%;
+
+    /* Couleurs et ésthétiques */
+    background-color: white;
+    box-shadow: 5px 5px 5px black;
+    border: 1px solid black;
+    border-radius: 2%;
+
+}
+
+.form__input {
+
+    width: 80%;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 0.625rem auto;
+    transition: all 250ms;
+
+}
+
+.titleForm
+{
+    border-bottom: 5px solid black;
+    padding-bottom: 15%;
+}
+
+#addProduct
+{
+    width: 15%;
+    padding: 12px;
+}
+
+#addProductForm
+{
+    width: 30%;
+    padding: 12px;
+}
