@@ -17,4 +17,66 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--main-color);
     font-size: 1em;
+    margin: 0;
+}
+/* a betifull css for my nav bar back color white but need a shadow at the bot of the nav bar when hover a link need to drow a row below
+/* <nav>
+        <ul>
+            <li>
+                <a href="/" title="Home">Home</a>
+            </li>
+            <li>
+                <a href="/stock" title="View stock">Stock</a>
+            </li>
+        </ul>
+      </nav>  */
+header{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav {
+    background-color: white;
+    box-shadow: 1px 6px 10px 0.5px rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+nav ul li a {
+    font-size: large;
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+nav ul li a {
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom right;
 }

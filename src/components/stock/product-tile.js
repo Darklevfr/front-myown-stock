@@ -8,8 +8,9 @@ export class ProductTile {
     product = null
 
     #template = `
-    <div class="product-tile">
-        <div class="product-thumbnail">
+    <div id={{ productId }} class="product-tile">
+        <div class = "product-tile-child">
+            <div class="product-thumbnail">
             <figure>
                 <img src="{{ productThumbnail }}">
             </figure>
@@ -22,6 +23,7 @@ export class ProductTile {
                 <span class="stock-label">Stock : </span>
                 <span class="product-stock">{{ productStock }}
             </div>
+        </div>
         </div>
     </div>
     `
@@ -38,6 +40,7 @@ export class ProductTile {
             this.#template = this.#template.replace(`{{ productThumbnail }}`, thumbnail)
             this.#template = this.#template.replace(`{{ productTitle }}`, this.product.label)
             this.#template = this.#template.replace(`{{ productStock }}`, this.product.stock)
+            this.#template = this.#template.replace(`{{ productId }}`, "produt-tile"+this.product.id)
 
             return this.#template
         }

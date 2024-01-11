@@ -10,4 +10,17 @@ export class HttpClient {
 
         return response.then((body) => body.json())
     }
+
+    async delete(uri, observeResponse = true) {
+        const response = fetch(
+            uri,
+            {
+                method: 'DELETE'
+            }
+        )
+        if (observeResponse) {
+            return response
+        }
+        return response.then((body) => body.json())
+    }
 }
